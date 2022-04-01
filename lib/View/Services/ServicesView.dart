@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../ServiceDetailsList/ServiceDetailsList.dart';
+import 'ServiceDetailsList/ServiceDetailsList.dart';
+
+
 
 class ServiceView extends StatefulWidget {
   @override
@@ -21,19 +23,19 @@ class _ServiceViewState extends State<ServiceView> {
           onTap: (){
             Navigator.pop(context, true);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
         ),
         titleSpacing: 0,
-        title: Text(
+        title: const Text(
           "SELECT SERVICE",
           style: TextStyle(fontSize: 18, color: Colors.black),
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Icon(
               Icons.search,
               size: 25,
@@ -43,14 +45,17 @@ class _ServiceViewState extends State<ServiceView> {
         ],
       ),
       body: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(10.0),
           child: GridView.builder(
             itemCount: 10,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, crossAxisSpacing: 2.0, mainAxisSpacing: 2.0),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, crossAxisSpacing: 2.0, mainAxisSpacing: 2.0),
             itemBuilder: (BuildContext context, int index) {
               return Card(
-                elevation: 3,
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
                 child: GestureDetector(
                   onTap: (){
                     Navigator.push(
@@ -59,21 +64,20 @@ class _ServiceViewState extends State<ServiceView> {
                           builder: (context) => ServiceDetailsList()),
                     );
                   },
-                  child: Container(
-                      child: Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/Cleaning2.jpg"),
-                        radius: 40,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("Cleaning  $index"),
-                      )
+                  const CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/Cleaning2.jpg"),
+                    radius: 40,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Cleaning  $index"),
+                  )
                     ],
-                  )),
+                  ),
                 ),
               );
             },

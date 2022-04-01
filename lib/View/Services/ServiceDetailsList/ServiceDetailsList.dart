@@ -139,7 +139,7 @@ class _ServiceDetailsListState extends State<ServiceDetailsList> {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
         ),
         width: size.width,
@@ -149,9 +149,12 @@ class _ServiceDetailsListState extends State<ServiceDetailsList> {
           physics: NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
             return Card(
-              elevation: 3,
-              child: Container(
-                height: 160,
+              elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: SizedBox(
+                height: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,7 +170,7 @@ class _ServiceDetailsListState extends State<ServiceDetailsList> {
                             child: Container(
                               width: 90.0,
                               height: 80.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: AssetImage(
@@ -186,14 +189,14 @@ class _ServiceDetailsListState extends State<ServiceDetailsList> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Service Name $index"),
-                        Container(
+                        SizedBox(
                           width: 150,
                           height: 50,
                           child: Row(
-                            children: [Text("• "), Text("Description")],
+                            children: const [Text("Description")],
                           ),
                         ),
-                        Text("Rs 555 /-"),
+                        const Text("Rs 555 /-"),
                       ],
                     ),
                     Flexible(
@@ -204,13 +207,17 @@ class _ServiceDetailsListState extends State<ServiceDetailsList> {
                           onTap: () {
                             _settingModalBottomSheet(context, index.toString());
                           },
-                          child: Container(
+                          child: SizedBox(
                             height: 100,
                             child: Row(
                               children: <Widget>[
                                 Expanded(
                                   flex: 0,
                                   child: Card(
+                                    elevation: 8,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
                                     child: Container(
                                         width: 60,
                                         height: 20,
@@ -219,7 +226,7 @@ class _ServiceDetailsListState extends State<ServiceDetailsList> {
                                           borderRadius:
                                               BorderRadius.circular(10.0),
                                           border: Border.all(
-                                              color: Colors.white, width: 1.0),
+                                              color: Colors.yellow, width: 1.0),
                                         ),
                                         child: Row(
                                           mainAxisAlignment:

@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-import '../ServiceDetailsList/ServiceDetailsList.dart';
+import '../Services/ServiceDetailsList/ServiceDetailsList.dart';
 import '../Services/ServicesView.dart';
+import 'HealthCareDashboard.dart';
+
+
 
 class ServiceDashboardView extends StatefulWidget {
   @override
@@ -60,7 +63,11 @@ class _ServiceDashboardViewState extends State<ServiceDashboardView> {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: GestureDetector(onTap: (){
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HealthCareDashboard()),
+                    );
                   },child: Icon(Icons.arrow_back, color: Colors.black)),
                 ),
                 Container(
@@ -178,10 +185,10 @@ class _ServiceDashboardViewState extends State<ServiceDashboardView> {
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Expanded(
+                    const Expanded(
                       flex: 0,
                       child: Padding(
-                        padding: const EdgeInsets.all(8),
+                        padding: EdgeInsets.all(8),
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 28,
@@ -233,7 +240,7 @@ class _ServiceDashboardViewState extends State<ServiceDashboardView> {
             ),
             Container(
               color: Colors.transparent,
-              height: 350,
+              height: size.height /2.1,
               width: size.width * 1.8,
               child: GridView.builder(
                 itemCount: 9,
@@ -244,7 +251,10 @@ class _ServiceDashboardViewState extends State<ServiceDashboardView> {
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
-                    elevation: 4,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(

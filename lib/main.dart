@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'View/Healthcare/HealthCareDashboard.dart';
+import 'View/Dashboard/HealthCareDashboard.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -40,9 +40,9 @@ class state extends State<SplashScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: const <Widget>[
               Center(
-                child: Image.asset('assets/images/logo.png'),
+                child: Text("Flutter UI",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40,color: Colors.amber),),
               ),
             ],
           )

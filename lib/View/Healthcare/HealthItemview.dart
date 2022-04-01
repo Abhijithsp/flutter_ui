@@ -133,7 +133,7 @@ class _HealthItemviewState extends State<HealthItemview> {
   Widget _HealthGrid() {
     var size = MediaQuery.of(context).size;
     final double itemHeight = 140;
-    final double itemWidth = 240;
+    final double itemWidth = 150;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(4.0),
@@ -142,20 +142,23 @@ class _HealthItemviewState extends State<HealthItemview> {
           children: [
             Container(
               color: Colors.transparent,
-              height: 315,
+              height: size.height /2.1,
               width: size.width * 1.8,
               child: GridView.builder(
-                itemCount: 6,
+                itemCount: 9,
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 3,
                   crossAxisSpacing: 5,
                   mainAxisSpacing: 5,
                   childAspectRatio: (itemWidth / itemHeight),
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
-                    elevation: 2,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(

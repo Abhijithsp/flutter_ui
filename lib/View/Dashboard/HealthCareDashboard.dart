@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-import 'HealthItemview.dart';
+import '../Healthcare/HealthItemview.dart';
+import '../navigationScreen.dart';
 
 class HealthCareDashboard extends StatefulWidget {
   @override
@@ -21,19 +22,23 @@ class _HealthCareDashboardState extends State<HealthCareDashboard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: const navigationScreen(),
         appBar: AppBar(
           elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.menu_rounded),
-            color: Colors.black,
-            iconSize: 20.0,
-            onPressed: () {
-              Navigator.pop(context);
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(Icons.menu_rounded,color: Colors.black,),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
             },
           ),
           automaticallyImplyLeading: true,
           title: Text(
-            "Health Care",
+            "Dashboard",
             style: TextStyle(color: Colors.black, fontSize: 15,fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.white,
@@ -41,16 +46,10 @@ class _HealthCareDashboardState extends State<HealthCareDashboard> {
         body: SingleChildScrollView(
           child: Stack(
             children: [
-              // Image(
-              //   image: AssetImage("assets/images/Cleaning7.jpg"),
-              //   width: MediaQuery.of(context).size.width,
-              //   height: MediaQuery.of(context).size.height,
-              //   fit: BoxFit.cover,
-              // ),
               Column(
                 children: [
                   _BannerSwiper(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   _HealthGrid(),
@@ -75,11 +74,11 @@ class _HealthCareDashboardState extends State<HealthCareDashboard> {
         alignment: Alignment.center,
         child: Material(
           elevation: 5.0,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(const Radius.circular(10)),
           child: TextField(
             cursorColor: Theme.of(context).primaryColor,
-            style: TextStyle(color: Colors.black, fontSize: 12),
-            decoration: InputDecoration(
+            style: const TextStyle(color: Colors.black, fontSize: 12),
+            decoration: const InputDecoration(
                 hintText: " Search Your Preferences...",
                 suffixIcon: Icon(Icons.search),
                 border: InputBorder.none,
