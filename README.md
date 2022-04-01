@@ -1,4 +1,4 @@
-# flutter_ui
+# Flutter UI Challenge
 
 A new Flutter project.
 
